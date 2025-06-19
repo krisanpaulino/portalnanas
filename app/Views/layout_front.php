@@ -125,23 +125,7 @@
         <!--end navigation-->
         <!--start page wrapper -->
         <div class="page-wrapper">
-            <div class="fixed-top" style="right: 10px; top:250px">
-                <div class="row row-cols-1 row-cols-md-4 row-cols-xl-6 d-flex justify-content-end">
-                    <div class="col-2">
-                        <div class="card radius-10">
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <div class="widgets-icons rounded-circle mx-auto bg-light-primary text-primary mb-3"><img src="<?= base_url('assets/images/analytics.gif') ?>" alt="" class="img-fluid">
-                                    </div>
-                                    <input type="hidden" id="harga_id">
-                                    <h4 class="my-1" id="harga"><?= number_format(getHarga()) ?></h4>
-                                    <p class="mb-0 text-secondary">Trend Harga Nanas</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <?= $this->renderSection('content'); ?>
 
         </div>

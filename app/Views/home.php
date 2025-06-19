@@ -15,6 +15,23 @@
         </div>
     </div> -->
 <!--end breadcrumb-->
+<div class="fixed-top" style="right: 10px; top:250px">
+    <div class="row-cols-6 d-flex justify-content-end">
+        <div class="col-2">
+            <div class="card radius-10">
+                <div class="card-body">
+                    <div class="text-center">
+                        <div class="widgets-icons rounded-circle mx-auto bg-light-primary text-primary mb-3"><img src="<?= base_url('assets/images/analytics.gif') ?>" alt="" class="img-fluid">
+                        </div>
+                        <input type="hidden" id="harga_id">
+                        <h4 class="my-1" id="harga"><?= number_format(getHarga()) ?></h4>
+                        <p class="mb-0 text-secondary">Trend Harga Nanas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <?php if (session()->has('success')) : ?>
     <div class="alert alert-success border-0 bg-success alert-dismissible fade show">
         <div class="text-white"><?= session('success') ?></div>
