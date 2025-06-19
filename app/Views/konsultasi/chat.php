@@ -60,6 +60,9 @@
                 </div> -->
             </div>
             <div class="chat-content">
+                <?php if ($percakapan == null): ?>
+                    <input type="hidden" name="lastchat_id" id="lastchat_id" value="0">
+                <?php endif ?>
                 <?php foreach ($percakapan as $key => $chat) : ?>
                     <?php if ($key + 1 == count($percakapan)): ?>
                         <input type="hidden" name="lastchat_id" id="lastchat_id" value="<?= $chat->percakapan_id ?>">
