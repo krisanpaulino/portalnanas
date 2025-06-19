@@ -49,10 +49,13 @@ class Ajax extends BaseController
     {
         $model = new PercakapanModel();
         $latest = $this->request->getGet('latest');
+        if ($latest == null)
+            $latest = 0;
         $konsultasi = $this->request->getGet('konsultasi');
         $kModel = new KonsultasiModel();
         $datakonsultasi = $kModel->getKonsultasi($konsultasi);
-        $percakapan = $model->where('konsultasi_id', $konsultasi)->where('percakapan_id >', $latest, false)->findAll();
+        $percakapan = $model->where('konsultasi_id', $konsultasi)->where('percakapan_id >', $latest, false)->orderBy('percakapan_id', 'asc')->findAll();
+
         $end = end($percakapan);
         if ($end) {
             $latest = $end->percakapan_id;

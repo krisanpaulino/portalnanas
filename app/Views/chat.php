@@ -144,6 +144,7 @@
 
     function retrieveChat() {
         var latest = $('#lastchat_id').val()
+        console.log(latest);
 
         var konsultasi = $('#konsultasi').val()
         // console.log(konsultasi);
@@ -156,8 +157,10 @@
                 konsultasi: konsultasi,
             },
             success: function(data) {
-                $('#lastchat_id').val(data.lastchat_id)
-                $('.chat-content').append(data.chat)
+                if (data.lastchat_id != null) {
+                    $('#lastchat_id').val(data.lastchat_id)
+                    $('.chat-content').append(data.chat)
+                }
             },
             error: function(e) {
                 console.log(e);

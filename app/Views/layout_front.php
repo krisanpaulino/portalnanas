@@ -218,7 +218,7 @@
                     console.log(data);
                     if (data != null) {
                         var harga = parseInt(data.harga)
-                        $('#lastchat_id').val(data.harga_id)
+                        // $('#lastharga').val(data.harga_id)
                         $('#harga').text(harga.toLocaleString('en-US'))
                     }
                 },

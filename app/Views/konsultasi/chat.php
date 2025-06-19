@@ -152,7 +152,7 @@
         var latest = $('#lastchat_id').val()
 
         var konsultasi = $('#konsultasi').val()
-        // console.log(konsultasi);
+        console.log(latest);
 
         $.ajax({
             url: '<?= base_url('ajax/getchat') ?>',
@@ -162,11 +162,13 @@
                 konsultasi: konsultasi,
             },
             success: function(data) {
+                // console.log(data);
+
                 $('#lastchat_id').val(data.lastchat_id)
                 $('.chat-content').append(data.chat)
             },
             error: function(e) {
-                console.log(e);
+                // console.log(e);
             },
             dataType: "json"
         });
