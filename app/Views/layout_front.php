@@ -125,7 +125,7 @@
         <!--end navigation-->
         <!--start page wrapper -->
         <div class="page-wrapper">
-            <div class="fixed-bottom" style="right: 10px;">
+            <div class="fixed-top" style="right: 10px; top:250px">
                 <div class="row row-cols-1 row-cols-md-4 row-cols-xl-6 d-flex justify-content-end">
                     <div class="col-2">
                         <div class="card radius-10">

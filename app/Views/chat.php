@@ -35,61 +35,65 @@
 
         </div>
         <input type="hidden" name="konsultasi" id="konsultasi" value="<?= $konsultasi->konsultasi_id ?>">
-        <div class="chat-wrapper my-5">
-            <div class="chat-header d-flex align-items-center">
-                <div class="chat-toggle-btn"><i class='bx bx-menu-alt-left'></i>
-                </div>
-                <div>
-                    <h4 class="mb-1 font-weight-bold"><?= $konsultasi->nama_admin ?></h4>
-                    <div class="list-inline d-sm-flex mb-0 d-none"> <a href="javascript:;" class="list-inline-item d-flex align-items-center text-secondary"><small class='bx bxs-circle me-1 chart-<?= ($konsultasi->status == 'open') ? 'online' : 'offline' ?>'></small><?= $konsultasi->topik ?>(<?= $konsultasi->status ?>)</a>
+        <div class="row">
+            <div class="col-9">
+                <div class="chat-wrapper my-5">
+                    <div class="chat-header d-flex align-items-center">
+                        <div class="chat-toggle-btn"><i class='bx bx-menu-alt-left'></i>
+                        </div>
+                        <div>
+                            <h4 class="mb-1 font-weight-bold"><?= $konsultasi->nama_admin ?></h4>
+                            <div class="list-inline d-sm-flex mb-0 d-none"> <a href="javascript:;" class="list-inline-item d-flex align-items-center text-secondary"><small class='bx bxs-circle me-1 chart-<?= ($konsultasi->status == 'open') ? 'online' : 'offline' ?>'></small><?= $konsultasi->topik ?>(<?= $konsultasi->status ?>)</a>
 
-                    </div>
-                </div>
-            </div>
-            <div class="chat-content">
-                <?php if ($percakapan == null): ?>
-                    <input type="hidden" name="lastchat_id" id="lastchat_id" value="0">
-                <?php endif ?>
-
-                <?php foreach ($percakapan as $key => $chat) : ?>
-                    <?php if ($key + 1 == count($percakapan)): ?>
-                        <input type="hidden" name="lastchat_id" id="lastchat_id" value="<?= $chat->percakapan_id ?>">
-                    <?php endif ?>
-
-                    <?php if ($chat->pengguna_id == session('user')->user_id) : ?>
-                        <div class="chat-content-rightside">
-                            <div class="d-flex ms-auto">
-                                <div class="flex-grow-1 me-2">
-                                    <p class="mb-0 chat-time text-end">you, <?= $chat->waktu_pesan ?></p>
-                                    <p class="chat-right-msg"><?= $chat->pesan ?></p>
-                                </div>
                             </div>
                         </div>
-                    <?php else : ?>
-                        <div class="chat-content-leftside">
-                            <div class="d-flex">
-                                <img src="<?= base_url('assets/img/profile/' . $konsultasi->foto_admin) ?>" width="48" height="48" class="rounded-circle" alt="" />
-                                <div class="flex-grow-1 ms-2">
-                                    <p class="mb-0 chat-time">Admin, <?= $chat->waktu_pesan ?></p>
-                                    <p class="chat-left-msg"><?= $chat->pesan ?></p>
+                    </div>
+                    <div class="chat-content">
+                        <?php if ($percakapan == null): ?>
+                            <input type="hidden" name="lastchat_id" id="lastchat_id" value="0">
+                        <?php endif ?>
+
+                        <?php foreach ($percakapan as $key => $chat) : ?>
+                            <?php if ($key + 1 == count($percakapan)): ?>
+                                <input type="hidden" name="lastchat_id" id="lastchat_id" value="<?= $chat->percakapan_id ?>">
+                            <?php endif ?>
+
+                            <?php if ($chat->pengguna_id == session('user')->user_id) : ?>
+                                <div class="chat-content-rightside">
+                                    <div class="d-flex ms-auto">
+                                        <div class="flex-grow-1 me-2">
+                                            <p class="mb-0 chat-time text-end">you, <?= $chat->waktu_pesan ?></p>
+                                            <p class="chat-right-msg"><?= $chat->pesan ?></p>
+                                        </div>
+                                    </div>
                                 </div>
+                            <?php else : ?>
+                                <div class="chat-content-leftside">
+                                    <div class="d-flex">
+                                        <img src="<?= base_url('assets/img/profile/' . $konsultasi->foto_admin) ?>" width="48" height="48" class="rounded-circle" alt="" />
+                                        <div class="flex-grow-1 ms-2">
+                                            <p class="mb-0 chat-time">Admin, <?= $chat->waktu_pesan ?></p>
+                                            <p class="chat-left-msg"><?= $chat->pesan ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach ?>
+                    </div>
+                    <div class="chat-footer d-flex align-items-center">
+                        <div class="flex-grow-1 pe-2">
+                            <div class="input-group">
+                                <input type="text" id="message" class="form-control" placeholder="Type a message">
                             </div>
                         </div>
-                    <?php endif; ?>
-                <?php endforeach ?>
-            </div>
-            <div class="chat-footer d-flex align-items-center">
-                <div class="flex-grow-1 pe-2">
-                    <div class="input-group">
-                        <input type="text" id="message" class="form-control" placeholder="Type a message">
+                        <div class="chat-footer-menu">
+                        </div>
                     </div>
-                </div>
-                <div class="chat-footer-menu">
+                    <!--start chat overlay-->
+                    <div class="overlay chat-toggle-btn-mobile"></div>
+                    <!--end chat overlay-->
                 </div>
             </div>
-            <!--start chat overlay-->
-            <div class="overlay chat-toggle-btn-mobile"></div>
-            <!--end chat overlay-->
         </div>
     </div>
 </div>
