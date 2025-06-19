@@ -28,10 +28,6 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php endif ?>
-        <div class="text-center">
-            <h1>Berita</h1>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambah"><i class='bx bx-message-dots'></i>Tambah Galeri</button>
-        </div>
         <div class="row">
             <div class="col-12 col-lg-9 mx-auto">
                 <!-- <h6 class="mb-0 text-uppercase">Basic Media Object</h6> -->
