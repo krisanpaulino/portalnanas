@@ -108,14 +108,9 @@ class User extends BaseController
     }
     public function delete()
     {
-        $model = new PetaniModel();
-        $petani_id = $this->request->getPost('petani_id');
-        $petani = $model->find($petani_id);
-        $user_id = $petani->user_id;
-        $model->where('petani_id', $petani_id);
-        $model->delete();
 
         $model = new UserModel();
+        $user_id = $this->request->getPost('user_id');
         $model->where('user_id', $user_id);
         $model->delete();
 
