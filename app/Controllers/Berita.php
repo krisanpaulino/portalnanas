@@ -31,7 +31,12 @@ class Berita extends BaseController
         // Proses Data Sekolah
         $databerita = $this->request->getPost();
         // dd($this->request->getFile('file'));
-
+        if ($databerita['berita_isi'] == null) {
+            return redirect()->back()
+                ->with('message', "Toastify({'text':'Gagal menambahkan berita! Data tidak lengkap', style: {
+            background: '#fd2e64',
+          }}).showToast()")->withInput();
+        }
         //Insert data to Sekolah
         //find images
         $doc = new DOMDocument();
@@ -54,7 +59,7 @@ class Berita extends BaseController
         if ($berita_id == false) {
             // dd($model->errors());
             return redirect()->back()->with('errors', $model->errors())
-                ->with('message', "Toastify({'text':'Gagal menambahkan sekolah! Data tidak lengkap', style: {
+                ->with('message', "Toastify({'text':'Gagal menambahkan berita! Data tidak lengkap', style: {
             background: '#fd2e64',
           }}).showToast()")->withInput();
         }
