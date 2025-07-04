@@ -35,10 +35,18 @@
 
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 row-cols-xl-4">
         <?php foreach ($galeri as $row) : ?>
+            <?php $ext = getExt(('assets/img/galeri/' . $row->gambar)) ?>
             <div class="col-md-4">
                 <div class="card border-primary border-bottom border-3 border-0">
-                    <img src="<?= base_url('assets/img/galeri/' . $row->gambar) ?>" class="card-img-top" alt="...">
+                    <?php if ($ext == 'jpg' || $ext == 'png' || $ext == 'jpeg'): ?>
+                        <img src="<?= base_url('assets/img/galeri/' . $row->gambar) ?>" class="card-img-top" alt="...">
+                    <?php endif ?>
                     <div class="card-body">
+                        <?php if (!($ext == 'jpg' || $ext == 'png' || $ext == 'jpeg')): ?>
+                            <video controls class="d-block w-100">
+                                <source src="<?= base_url('assets/img/galeri/' . $row->gambar) ?>" type="video/mp4">
+                            </video>
+                        <?php endif ?>
                         <h5 class="card-title text-primary"><?= $row->judul ?></h5>
                         <p class="card-text"><?= $row->isi ?>.</p>
                         <hr>
