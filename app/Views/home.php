@@ -139,37 +139,28 @@
 <section id="features" class="features">
     <div class="container" data-aos="fade-up">
         <div class="row d-flex justify-content-center">
-            <div class="col-4 text-center">
+            <div class="col-12 text-center">
                 <div class="section-header">
                     <h2>
-                        Galeri
+                        Berita Terbaru
                     </h2>
                 </div>
-                <p class="blockquote">Galeri kultivasi perkebunan nanas.
-                </p>
             </div>
-            <div class="col-7">
-                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <?php foreach ($galeri as $key => $row): ?>
-                            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<?= $key ?>" class="<?= ($key == 0) ? 'active' : '' ?>"></li>
-                        <?php endforeach ?>
-                    </ol>
-                    <div class="carousel-inner">
-                        <?php foreach ($galeri as $key => $row): ?>
-                            <div class="carousel-item <?= ($key == 0) ? 'active' : '' ?>">
-                                <img src="<?= base_url('assets/img/galeri/' . $row->gambar) ?>" class="d-block w-100" alt="...">
+            <div class="col-12">
+                <?php foreach ($berita as $row) : ?>
+                    <div class="card radius-10">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <img src="<?= base_url('assets/images/' . $row->berita_gambar) ?>" class="rounded-circle p-1 border" width="90" height="90" alt="...">
+                                <div class="flex-grow-1 ms-3">
+                                    <h5 class="mt-0"><?= $row->berita_judul ?></h5>
+                                    <span class="text-muted small"><?= $row->berita_tanggal ?></span>
+                                    <p class="mb-0" <?= substr(strip_tags(preg_replace("/<img[^>]+\>/i", "", $row->berita_isi)), 0, 250) ?> ...</p> <a href="<?= base_url('berita/' . $row->berita_id) ?>" class="text-primary">Lihat Selengkapnya >></a></p>
+                                </div>
                             </div>
-                        <?php endforeach ?>
-
+                        </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </a>
-                </div>
+                <?php endforeach ?>
             </div>
         </div>
 

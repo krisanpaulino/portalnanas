@@ -85,6 +85,14 @@
                             <div class="menu-title text-dark">Berita</div>
                         </a>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a href="<?= base_url('galeri') ?>" class="nav-link">
+                            <!-- <div class="parent-icon"><i class='bx bx-home-circle'></i>
+                            </div> -->
+
+                            <div class="menu-title text-dark">Galeri</div>
+                        </a>
+                    </li>
                     <?php if (!session()->has('user') || !session('user')->user_type == 'pengguna'):  ?>
                         <li class="nav-item dropdown">
                             <a href="<?= (!session()->has('user')) ? base_url('auth') : base_url(session('user')->user_type) ?>" class="nav-link">
@@ -203,7 +211,7 @@
                     if (data != null) {
                         var harga = parseInt(data.harga)
                         // $('#lastharga').val(data.harga_id)
-                        $('#harga').text(harga.toLocaleString('en-US'))
+                        $('#harga').text('Rp' + harga.toLocaleString('en-US') + ' /buah')
                     }
                 },
                 error: function(e) {

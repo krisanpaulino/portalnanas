@@ -11,6 +11,7 @@ $routes->get('berita', 'Home::berita');
 $routes->get('berita/(:num)', 'Home::detailBerita/$1');
 $routes->post('komentar', 'Home::komentar');
 $routes->get('budidaya/(:num)', 'Home::detailBudidaya/$1');
+$routes->get('galeri', 'Home::galeri');
 
 $routes->get('konsultasi', 'Home::konsultasi');
 $routes->get('konsultasi/(:num)', 'Home::chat/$1');

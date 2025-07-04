@@ -75,9 +75,7 @@ class GaleriModel extends Model
     }
     function search($search = null)
     {
-        $this->select('galeri.*, galeri.*, count(komentar.komentar_id) as jumlahkomentar');
         $this->join('galeri', 'galeri.galeri_id = galeri.galeri_id', 'left');
-        $this->join('komentar', 'komentar.galeri_id = galeri.galeri_id', 'left');
         $this->groupBy('galeri.galeri_id');
         if ($search != null)
             $this->like('galeri_nama', $search);

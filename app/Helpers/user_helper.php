@@ -52,3 +52,9 @@ function getHarga()
         return 0;
     return $harga->harga_trend;
 }
+
+function getExt($path)
+{
+    $file = new \CodeIgniter\Files\File($path, true);
+    return $file->guessExtension();
+}

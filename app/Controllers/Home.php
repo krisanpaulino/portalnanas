@@ -20,12 +20,12 @@ class Home extends BaseController
     {
         $model = new BudidayaModel();
         $budidaya = $model->orderBy('created_at', 'desc')->findAll();
-        $model = new GaleriModel();
-        $galeri = $model->orderBy('galeri_id', 'desc')->find();
+        $model = new BeritaModel();
+        $berita = $model->orderBy('berita_id', 'desc')->limit(5)->find();
         $data = [
             'title' => 'Home',
             'budidaya' => $budidaya,
-            'galeri' => $galeri,
+            'berita' => $berita,
         ];
         return view('home', $data);
     }
@@ -89,14 +89,14 @@ class Home extends BaseController
     public function admin()
     {
         $data['title'] = 'Dashboard';
-        // $model = new PetaniModel();
-        // $data['jumlah_petani'] = $model->findCount();
-        // // $model = new PakarModel();
-        // // $data['jumlah_pakar'] = $model->findCount();
-        // // $model = new DiagnosaModel();
-        // // $data['jumlah_diagnosa'] = $model->findCount();
-        // $model = new TanamanModel();
-        // $data['jumlah_tanaman'] = $model->findCount();
+
+        $model = new BeritaModel();
+        $data['berita'] = $model->countAllResults();
+        $model = new BudidayaModel();
+        $data['budidaya'] = $model->countAllResults();
+        $model = new KonsultasiModel();
+        $data['open'] = $model->where('status', 'open')->countAllResults();
+        $data['close'] = $model->where('status', 'close')->countAllResults();
 
         return view('dashboard/admin', $data);
     }
@@ -140,5 +140,12 @@ class Home extends BaseController
         $data['konsultasi'] = $konsultasi;
         $data['percakapan'] = $percakapan;
         return view('chat', $data);
+    }
+    function galeri($id = null)
+    {
+        $data['title'] = 'Galeri';
+        $model = new GaleriModel();
+        $data['galeri'] = $model->orderBy('galeri_id', 'desc')->find();
+        return view('galeri', $data);
     }
 }
